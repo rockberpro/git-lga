@@ -101,96 +101,122 @@ alias glga='git lga'
 # Bash completion for aliases above
 # Requires git-completion.bash (usually sourced via /etc/bash_completion.d/git)
 # ==============================================================================
+
+# git-completion is frequently lazy-loaded (only on the first `git <Tab>`), so
+# when this file is sourced from ~/.bashrc __git_complete may not exist yet.
+# Force it to load, otherwise the whole block below is skipped and nothing hooks.
+# Source the completion file directly: the dynamic loader (_completion_loader)
+# returns 124 without defining __git_complete on the first call, so it is only a
+# last resort here.
+if ! declare -F __git_complete > /dev/null 2>&1; then
+    for _lga_f in /usr/share/bash-completion/completions/git \
+                  /etc/bash_completion.d/git \
+                  /usr/share/git-core/git-completion.bash \
+                  /usr/local/share/git-core/contrib/completion/git-completion.bash; do
+        [ -r "$_lga_f" ] && . "$_lga_f"
+        declare -F __git_complete > /dev/null 2>&1 && break
+    done
+    unset _lga_f
+fi
+if ! declare -F __git_complete > /dev/null 2>&1; then
+    declare -F _completion_loader > /dev/null 2>&1 && _completion_loader git
+fi
+
+# Register only when the target completion function exists (versions differ,
+# e.g. _git_blame is absent in some) so a missing one falls back to default
+# completion instead of printing an error.
+_lga_complete() { declare -F "$2" > /dev/null 2>&1 && __git_complete "$@"; }
+
 if declare -f __git_complete > /dev/null 2>&1; then
     # ADD
-    __git_complete gad  _git_add
-    __git_complete gada _git_add
-    __git_complete gadu _git_add
+    _lga_complete gad  _git_add
+    _lga_complete gada _git_add
+    _lga_complete gadu _git_add
 
     # BRANCH
-    __git_complete gbr  _git_branch
-    __git_complete gbrd _git_branch
-    __git_complete gbrl _git_branch
-    __git_complete gbrs _git_branch
+    _lga_complete gbr  _git_branch
+    _lga_complete gbrd _git_branch
+    _lga_complete gbrl _git_branch
+    _lga_complete gbrs _git_branch
 
     # COMMIT
-    __git_complete gcm  _git_commit
-    __git_complete gcmf _git_commit
-    __git_complete gcma _git_commit
-    __git_complete gcmn _git_commit
-    __git_complete gcmm _git_commit
+    _lga_complete gcm  _git_commit
+    _lga_complete gcmf _git_commit
+    _lga_complete gcma _git_commit
+    _lga_complete gcmn _git_commit
+    _lga_complete gcmm _git_commit
 
     # CHECKOUT / SWITCH / RESTORE
-    __git_complete gck  _git_checkout
-    __git_complete gsw  _git_switch
-    __git_complete gswc _git_switch
-    __git_complete grs  _git_restore
-    __git_complete grsa _git_restore
-    __git_complete grss _git_restore
+    _lga_complete gck  _git_checkout
+    _lga_complete gsw  _git_switch
+    _lga_complete gswc _git_switch
+    _lga_complete grs  _git_restore
+    _lga_complete grsa _git_restore
+    _lga_complete grss _git_restore
 
     # DIFF
-    __git_complete gdf  _git_diff
-    __git_complete gdfc _git_diff
-    __git_complete gdfi _git_diff
-    __git_complete gdfw _git_diff
+    _lga_complete gdf  _git_diff
+    _lga_complete gdfc _git_diff
+    _lga_complete gdfi _git_diff
+    _lga_complete gdfw _git_diff
 
     # FETCH / PULL / PUSH
-    __git_complete gft  _git_fetch
-    __git_complete gftp _git_fetch
-    __git_complete gpl  _git_pull
-    __git_complete gplh _git_pull
-    __git_complete gps  _git_push
-    __git_complete gpsf _git_push
-    __git_complete gpsh _git_push
-    __git_complete gpshf _git_push
+    _lga_complete gft  _git_fetch
+    _lga_complete gftp _git_fetch
+    _lga_complete gpl  _git_pull
+    _lga_complete gplh _git_pull
+    _lga_complete gps  _git_push
+    _lga_complete gpsf _git_push
+    _lga_complete gpsh _git_push
+    _lga_complete gpshf _git_push
 
     # LOG / SHOW
-    __git_complete glg  _git_log
-    __git_complete glgh _git_log
-    __git_complete glgp _git_log
-    __git_complete glgo _git_log
-    __git_complete gsh  _git_show
+    _lga_complete glg  _git_log
+    _lga_complete glgh _git_log
+    _lga_complete glgp _git_log
+    _lga_complete glgo _git_log
+    _lga_complete gsh  _git_show
 
     # MERGE / REBASE
-    __git_complete gmg  _git_merge
-    __git_complete gmga _git_merge
-    __git_complete gmgc _git_merge
-    __git_complete gmgs _git_merge
-    __git_complete grb  _git_rebase
-    __git_complete grba _git_rebase
-    __git_complete grbc _git_rebase
-    __git_complete grbi _git_rebase
-    __git_complete grbo _git_rebase
+    _lga_complete gmg  _git_merge
+    _lga_complete gmga _git_merge
+    _lga_complete gmgc _git_merge
+    _lga_complete gmgs _git_merge
+    _lga_complete grb  _git_rebase
+    _lga_complete grba _git_rebase
+    _lga_complete grbc _git_rebase
+    _lga_complete grbi _git_rebase
+    _lga_complete grbo _git_rebase
 
     # STASH
-    __git_complete gsth  _git_stash
-    __git_complete gsthc _git_stash
-    __git_complete gsthd _git_stash
-    __git_complete gsthl _git_stash
-    __git_complete gstho _git_stash
-    __git_complete gsthp _git_stash
-    __git_complete gstha _git_stash
-    __git_complete gsths _git_stash
+    _lga_complete gsth  _git_stash
+    _lga_complete gsthc _git_stash
+    _lga_complete gsthd _git_stash
+    _lga_complete gsthl _git_stash
+    _lga_complete gstho _git_stash
+    _lga_complete gsthp _git_stash
+    _lga_complete gstha _git_stash
+    _lga_complete gsths _git_stash
 
     # STATUS
-    __git_complete gst  _git_status
-    __git_complete gsts _git_status
+    _lga_complete gst  _git_status
+    _lga_complete gsts _git_status
 
     # UTILS
-    __git_complete gbl  _git_blame
-    __git_complete gcfg _git_config
-    __git_complete gcfgl _git_config
-    __git_complete gcln _git_clean
-    __git_complete gclf _git_clean
-    __git_complete gclo _git_clone
-    __git_complete gcha _git_cherry_pick
-    __git_complete gchc _git_cherry_pick
-    __git_complete gchp _git_cherry_pick
-    __git_complete gds  _git_describe
-    __git_complete ggp  _git_grep
-    __git_complete gin  _git_init
-    __git_complete grt  _git_remote
-    __git_complete grv  _git_revert
-    __git_complete gtg  _git_tag
-    __git_complete grst _git_reset
+    _lga_complete gbl  _git_blame
+    _lga_complete gcfg _git_config
+    _lga_complete gcfgl _git_config
+    _lga_complete gcln _git_clean
+    _lga_complete gclf _git_clean
+    _lga_complete gclo _git_clone
+    _lga_complete gcha _git_cherry_pick
+    _lga_complete gchc _git_cherry_pick
+    _lga_complete gchp _git_cherry_pick
+    _lga_complete gds  _git_describe
+    _lga_complete ggp  _git_grep
+    _lga_complete gin  _git_init
+    _lga_complete grt  _git_remote
+    _lga_complete grv  _git_revert
+    _lga_complete gtg  _git_tag
+    _lga_complete grst _git_reset
 fi
