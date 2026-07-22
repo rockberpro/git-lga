@@ -95,3 +95,37 @@ function grv   { git rv @args }
 function gtg   { git tg @args }
 function grst  { git rst @args }
 function glga  { git lga @args }
+
+# ==============================================================================
+# PowerShell completion for the functions above (requires posh-git)
+# Each function is "g" + a git alias, so we strip the leading "g" and let
+# posh-git complete the rewritten "git <alias> ..." line.
+# ==============================================================================
+$GitLgaCompleter = {
+    param($wordToComplete, $commandAst, $cursorPosition)
+    if (-not (Get-Command Expand-GitCommand -ErrorAction Ignore)) { return }
+    $fn   = $commandAst.CommandElements[0].Value
+    $rest = ($commandAst.CommandElements | Select-Object -Skip 1 | ForEach-Object { $_.Extent.Text }) -join ' '
+    $cmd  = "git " + $fn.Substring(1)
+    if ($rest) { $cmd += " " + $rest }
+    # Extent.Text drops the trailing space; re-add it when the cursor is on a fresh arg.
+    if (-not $wordToComplete) { $cmd += " " }
+    Expand-GitCommand $cmd
+}
+
+$GitLgaFns = @(
+    'gad','gada','gadu',
+    'gbr','gbrd','gbrl','gbrs',
+    'gcm','gcmf','gcma','gcmn','gcmm',
+    'gck','gsw','gswc','grs','grsa','grss',
+    'gdf','gdfc','gdfi','gdfw',
+    'gft','gftp','gpl','gplh','gps','gpsf','gpsh','gpshf',
+    'glg','glgh','glgp','glgo','gsh',
+    'gmg','gmga','gmgc','gmgs','grb','grba','grbc','grbi','grbo',
+    'gsth','gsthc','gsthd','gsthl','gstho','gsthp','gstha','gsths',
+    'gst','gsts',
+    'gbl','gcfg','gcfgl','gcln','gclf','gclo','gcha','gchc','gchp',
+    'gds','ggp','gin','grt','grv','gtg','grst','glga'
+)
+
+Register-ArgumentCompleter -CommandName $GitLgaFns -ScriptBlock $GitLgaCompleter
