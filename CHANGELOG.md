@@ -1,9 +1,10 @@
 # Changelog
 
-## [0.3.0] - 2026-10-01
+## [0.2.0] - 2026-10-01
 
 ### Added
 
+- Worktree aliases: `wt`, `wta` add, `wtl` list, `wtm` move, `wtp` prune, `wtr` remove (plus `g`-prefixed shell aliases with completion)
 - Bisect aliases: `bs`, `bsb` bad, `bsg` good, `bsr` reset, `bss` start
 - `rl` reflog
 - Submodule aliases: `sm`, `smu` update --init --recursive
@@ -18,12 +19,6 @@
 ### Changed
 
 - **Breaking:** renamed `cha` to `chpa` (cherry-pick --abort) and `chc` to `chpc` (cherry-pick --continue) so they share the `chp` prefix. The old names are gone; shell aliases `gcha`/`gchc` are now `gchpa`/`gchpc`
-
-## [0.2.0] - 2026-10-01
-
-### Added
-
-- Worktree aliases: `wt`, `wta` add, `wtl` list, `wtm` move, `wtp` prune, `wtr` remove (plus `g`-prefixed shell aliases with completion)
 
 ## [0.1.3] - 2026-04-09
 
