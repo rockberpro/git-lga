@@ -7,12 +7,16 @@
 # --- ADD ---
 alias gad='git ad'
 alias gada='git ada'
+alias gadp='git adp'
 alias gadu='git adu'
 
 # --- BRANCH ---
 alias gbr='git br'
 alias gbrd='git brd'
 alias gbrl='git brl'
+alias gbra='git bra'
+alias gbrf='git brf'
+alias gbrm='git brm'
 alias gbrs='git brs'
 
 # --- COMMIT ---
@@ -35,16 +39,20 @@ alias gdf='git df'
 alias gdfc='git dfc'
 alias gdfi='git dfi'
 alias gdfw='git dfw'
+alias gdfs='git dfs'
 
 # --- FETCH / PULL / PUSH ---
 alias gft='git ft'
 alias gftp='git ftp'
+alias gfta='git fta'
 alias gpl='git pl'
 alias gplh='git plh'
+alias gplr='git plr'
 alias gps='git ps'
 alias gpsf='git psf'
 alias gpsh='git psh'
 alias gpshf='git pshf'
+alias gpsu='git psu'
 
 # --- LOG / SHOW ---
 alias glg='git lg'
@@ -63,6 +71,7 @@ alias grba='git rba'
 alias grbc='git rbc'
 alias grbi='git rbi'
 alias grbo='git rbo'
+alias grbs='git rbs'
 
 # --- STASH ---
 alias gsth='git sth'
@@ -73,6 +82,7 @@ alias gstho='git stho'
 alias gsthp='git sthp'
 alias gstha='git stha'
 alias gsths='git sths'
+alias gsthu='git sthu'
 
 # --- STATUS ---
 alias gst='git st'
@@ -86,23 +96,45 @@ alias gwtm='git wtm'
 alias gwtp='git wtp'
 alias gwtr='git wtr'
 
+# --- BISECT ---
+alias gbs='git bs'
+alias gbsb='git bsb'
+alias gbsg='git bsg'
+alias gbsr='git bsr'
+alias gbss='git bss'
+
+# --- REFLOG ---
+alias grl='git rl'
+
+# --- SUBMODULE ---
+alias gsm='git sm'
+alias gsmu='git smu'
+
 # --- UTILS ---
 alias gbl='git bl'
 alias gcfg='git cfg'
 alias gcfgl='git cfgl'
 alias gcln='git cln'
 alias gclf='git clf'
+alias gclfd='git clfd'
 alias gclo='git clo'
-alias gcha='git cha'
-alias gchc='git chc'
 alias gchp='git chp'
+alias gchpa='git chpa'
+alias gchpc='git chpc'
+alias gchps='git chps'
 alias gds='git ds'
 alias ggp='git gp'
 alias gin='git in'
 alias grt='git rt'
+alias grtv='git rtv'
 alias grv='git rv'
+alias grva='git rva'
+alias grvc='git rvc'
 alias gtg='git tg'
+alias gtgd='git tgd'
 alias grst='git rst'
+alias grsth='git rsth'
+alias grsts='git rsts'
 alias glga='git lga'
 
 # ==============================================================================
@@ -139,12 +171,16 @@ if declare -f __git_complete > /dev/null 2>&1; then
     # ADD
     _lga_complete gad  _git_add
     _lga_complete gada _git_add
+    _lga_complete gadp _git_add
     _lga_complete gadu _git_add
 
     # BRANCH
     _lga_complete gbr  _git_branch
     _lga_complete gbrd _git_branch
     _lga_complete gbrl _git_branch
+    _lga_complete gbra _git_branch
+    _lga_complete gbrf _git_branch
+    _lga_complete gbrm _git_branch
     _lga_complete gbrs _git_branch
 
     # COMMIT
@@ -167,16 +203,20 @@ if declare -f __git_complete > /dev/null 2>&1; then
     _lga_complete gdfc _git_diff
     _lga_complete gdfi _git_diff
     _lga_complete gdfw _git_diff
+    _lga_complete gdfs _git_diff
 
     # FETCH / PULL / PUSH
     _lga_complete gft  _git_fetch
     _lga_complete gftp _git_fetch
+    _lga_complete gfta _git_fetch
     _lga_complete gpl  _git_pull
     _lga_complete gplh _git_pull
+    _lga_complete gplr _git_pull
     _lga_complete gps  _git_push
     _lga_complete gpsf _git_push
     _lga_complete gpsh _git_push
     _lga_complete gpshf _git_push
+    _lga_complete gpsu _git_push
 
     # LOG / SHOW
     _lga_complete glg  _git_log
@@ -195,6 +235,7 @@ if declare -f __git_complete > /dev/null 2>&1; then
     _lga_complete grbc _git_rebase
     _lga_complete grbi _git_rebase
     _lga_complete grbo _git_rebase
+    _lga_complete grbs _git_rebase
 
     # STASH
     _lga_complete gsth  _git_stash
@@ -205,6 +246,7 @@ if declare -f __git_complete > /dev/null 2>&1; then
     _lga_complete gsthp _git_stash
     _lga_complete gstha _git_stash
     _lga_complete gsths _git_stash
+    _lga_complete gsthu _git_stash
 
     # STATUS
     _lga_complete gst  _git_status
@@ -218,21 +260,43 @@ if declare -f __git_complete > /dev/null 2>&1; then
     _lga_complete gwtp _git_worktree
     _lga_complete gwtr _git_worktree
 
+    # BISECT
+    _lga_complete gbs _git_bisect
+    _lga_complete gbsb _git_bisect
+    _lga_complete gbsg _git_bisect
+    _lga_complete gbsr _git_bisect
+    _lga_complete gbss _git_bisect
+
+    # REFLOG
+    _lga_complete grl _git_reflog
+
+    # SUBMODULE
+    _lga_complete gsm _git_submodule
+    _lga_complete gsmu _git_submodule
+
     # UTILS
     _lga_complete gbl  _git_blame
     _lga_complete gcfg _git_config
     _lga_complete gcfgl _git_config
     _lga_complete gcln _git_clean
     _lga_complete gclf _git_clean
+    _lga_complete gclfd _git_clean
     _lga_complete gclo _git_clone
-    _lga_complete gcha _git_cherry_pick
-    _lga_complete gchc _git_cherry_pick
     _lga_complete gchp _git_cherry_pick
+    _lga_complete gchpa _git_cherry_pick
+    _lga_complete gchpc _git_cherry_pick
+    _lga_complete gchps _git_cherry_pick
     _lga_complete gds  _git_describe
     _lga_complete ggp  _git_grep
     _lga_complete gin  _git_init
     _lga_complete grt  _git_remote
+    _lga_complete grtv _git_remote
     _lga_complete grv  _git_revert
+    _lga_complete grva _git_revert
+    _lga_complete grvc _git_revert
     _lga_complete gtg  _git_tag
+    _lga_complete gtgd _git_tag
     _lga_complete grst _git_reset
+    _lga_complete grsth _git_reset
+    _lga_complete grsts _git_reset
 fi
