@@ -57,7 +57,7 @@ Run `git lga` to see every alias right in your terminal:
 ║ sthd   │ stash drop                             ║
 ║         ...                                     ║
 ╚═════════════════════════════════════════════════╝
-  71 aliases across 13 groups
+  77 aliases across 14 groups
 ```
 
 ## Install
@@ -115,6 +115,7 @@ Every alias follows the same rule: **prefix** (2–3 letters from the command na
 | `sth`  | stash       | `stha` apply, `sthd` drop, `sthl` list, `stho` pop, `sthp` push, `sthc` clear, `sths` show |
 | `st`   | status      | `sts` short                                                                                |
 | `chp`  | cherry-pick | `cha` abort, `chc` continue                                                                |
+| `wt`   | worktree    | `wta` add, `wtl` list, `wtm` move, `wtp` prune, `wtr` remove                               |
 
 **Other aliases:** `bl` blame, `cfg` config, `cfgl` config --list, `cln` clean, `clf` clean --force, `clo` clone, `ds` describe, `gp` grep, `in` init, `rt` remote, `rv` revert, `rst` reset, `tg` tag, `brs` show-current-branch.
 

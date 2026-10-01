@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.2.0] - 2026-10-01
+
+### Added
+
+- Worktree aliases: `wt`, `wta` add, `wtl` list, `wtm` move, `wtp` prune, `wtr` remove (plus `g`-prefixed shell aliases with completion)
+
 ## [0.1.3] - 2026-04-09
 
 ### Changed
