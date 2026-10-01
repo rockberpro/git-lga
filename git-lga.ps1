@@ -77,6 +77,14 @@ function gsths { git sths @args }
 function gst  { git st @args }
 function gsts { git sts @args }
 
+# --- WORKTREE ---
+function gwt  { git wt @args }
+function gwta { git wta @args }
+function gwtl { git wtl @args }
+function gwtm { git wtm @args }
+function gwtp { git wtp @args }
+function gwtr { git wtr @args }
+
 # --- UTILS ---
 function gbl   { git bl @args }
 function gcfg  { git cfg @args }
@@ -124,6 +132,7 @@ $GitLgaFns = @(
     'gmg','gmga','gmgc','gmgs','grb','grba','grbc','grbi','grbo',
     'gsth','gsthc','gsthd','gsthl','gstho','gsthp','gstha','gsths',
     'gst','gsts',
+    'gwt','gwta','gwtl','gwtm','gwtp','gwtr',
     'gbl','gcfg','gcfgl','gcln','gclf','gclo','gcha','gchc','gchp',
     'gds','ggp','gin','grt','grv','gtg','grst','glga'
 )

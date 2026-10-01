@@ -87,6 +87,14 @@
     st  = status
     sts = status --short --branch
 
+    # --- WORKTREE (wt) ---
+    wt  = worktree
+    wta = worktree add
+    wtl = worktree list
+    wtm = worktree move
+    wtp = worktree prune
+    wtr = worktree remove
+
     # --- UTILS ---
     bl   = blame
     cfg  = config

@@ -78,6 +78,14 @@ alias gsths='git sths'
 alias gst='git st'
 alias gsts='git sts'
 
+# --- WORKTREE ---
+alias gwt='git wt'
+alias gwta='git wta'
+alias gwtl='git wtl'
+alias gwtm='git wtm'
+alias gwtp='git wtp'
+alias gwtr='git wtr'
+
 # --- UTILS ---
 alias gbl='git bl'
 alias gcfg='git cfg'
@@ -201,6 +209,14 @@ if declare -f __git_complete > /dev/null 2>&1; then
     # STATUS
     _lga_complete gst  _git_status
     _lga_complete gsts _git_status
+
+    # WORKTREE
+    _lga_complete gwt  _git_worktree
+    _lga_complete gwta _git_worktree
+    _lga_complete gwtl _git_worktree
+    _lga_complete gwtm _git_worktree
+    _lga_complete gwtp _git_worktree
+    _lga_complete gwtr _git_worktree
 
     # UTILS
     _lga_complete gbl  _git_blame
