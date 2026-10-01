@@ -16,12 +16,16 @@
     # --- ADD (ad) ---
     ad  = add
     ada = add .
+    adp = add --patch
     adu = add --update
 
     # --- BRANCH (br) ---
     br  = branch
     brd = branch --delete
     brl = branch --list
+    bra = branch --all
+    brf = branch --delete --force
+    brm = branch --move
     brs = branch --show-current
 
     # --- COMMIT (cm) ---
@@ -44,16 +48,20 @@
     dfc  = diff --cached
     dfi  = diff --ignore-all-space
     dfw  = diff --word-diff
+    dfs  = diff --stat
 
     # --- FETCH / PULL / PUSH ---
     ft   = fetch
     ftp  = fetch --prune
+    fta  = fetch --all
     pl   = pull
     plh  = pull origin HEAD
+    plr  = pull --rebase
     ps   = push
     psf  = push --force-with-lease
     psh  = push origin HEAD
     pshf = push origin HEAD --force-with-lease
+    psu  = push --set-upstream
 
     # --- LOG / SHOW ---
     lg  = log
@@ -72,6 +80,7 @@
     rbc = rebase --continue
     rbi = rebase --interactive
     rbo = rebase --onto
+    rbs = rebase --skip
 
     # --- STASH (sth) ---
     sth  = stash
@@ -82,6 +91,7 @@
     sthp = stash push
     stha = stash apply
     sths = stash show --patch
+    sthu = stash push --include-untracked
 
     # --- STATUS (st) ---
     st  = status
@@ -95,21 +105,43 @@
     wtp = worktree prune
     wtr = worktree remove
 
+    # --- BISECT (bs) ---
+    bs  = bisect
+    bsb = bisect bad
+    bsg = bisect good
+    bsr = bisect reset
+    bss = bisect start
+
+    # --- REFLOG (rl) ---
+    rl  = reflog
+
+    # --- SUBMODULE (sm) ---
+    sm  = submodule
+    smu = submodule update --init --recursive
+
     # --- UTILS ---
     bl   = blame
     cfg  = config
     cfgl = config --list
     cln  = clean
     clf  = clean --force
+    clfd = clean --force -d
     clo  = clone
-    cha  = cherry-pick --abort
-    chc  = cherry-pick --continue
     chp  = cherry-pick
+    chpa = cherry-pick --abort
+    chpc = cherry-pick --continue
+    chps = cherry-pick --skip
     ds   = describe
     gp   = grep
     in   = init
     rt   = remote
+    rtv  = remote --verbose
     rv   = revert
+    rva  = revert --abort
+    rvc  = revert --continue
     tg   = tag
+    tgd  = tag --delete
     rst  = reset
+    rsth = reset --hard
+    rsts = reset --soft
     lga  = !~/.git-lga-help.sh
